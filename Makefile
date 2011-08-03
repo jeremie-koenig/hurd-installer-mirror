@@ -7,7 +7,7 @@ all:
 	$(MAKE) stamps/release
 
 stamps/mirror:
-	apt-mirror
+	apt-mirror mirror.list
 	/var/spool/apt-mirror/var/clean.sh
 	touch $@
 
@@ -19,12 +19,12 @@ stamps/mirror:
 
 $(mir)/$(dist)/main/binary-$(arch)/Packages: \
 		override.sid.main stamps/mirror
-	(cd $(mir) && dpkg-scanpackages . ../$<) > $@.n
+	(cd $(mir) && dpkg-scanpackages . $(CURDIR)/$<) > $@.n
 	mv $@.n $@
 
 $(mir)/$(dist)/main/debian-installer/binary-$(arch)/Packages: \
 		override.sid.main.debian-installer stamps/mirror
-	(cd $(mir) && dpkg-scanpackages -tudeb . ../$<) > $@.n
+	(cd $(mir) && dpkg-scanpackages -tudeb . $(CURDIR)/$<) > $@.n
 	mv $@.n $@
 
 $(mir)/$(dist)/main/source/Sources: stamps/mirror
