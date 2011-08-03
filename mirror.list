@@ -23,8 +23,10 @@ deb http://ftp.debian-ports.org/debian unreleased main
 deb-src http://ftp.debian-ports.org/debian unreleased main
 clean http://ftp.debian-ports.org/debian
 
-# Includes fixed packages and udebs
+# Include fixed packages and udebs
 deb http://jk.fr.eu.org/debian unstable/
 deb-src http://jk.fr.eu.org/debian unstable/
 clean http://jk.fr.eu.org/debian
+deb http://people.debian.org/~sthibault/hurd-i386/installer unstable main main/debian-installer
+clean http://people.debian.org/~sthibault/hurd-i386/installer
 
